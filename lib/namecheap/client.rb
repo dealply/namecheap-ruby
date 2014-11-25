@@ -10,8 +10,8 @@ module Namecheap
     class NamecheapApiException < StandardError
     end
 
-    def initialize(api_username, api_key, api_url=nil)
-      @auth = { :api_username => api_username, :api_key => api_key }
+    def initialize(api_username, api_key, ip='127.0.0.1',api_url=nil)
+      @auth = { :api_username => api_username, :api_key => api_key, :ip => ip }
       self.class.base_uri(api_url) if api_url
     end
 
@@ -142,7 +142,7 @@ module Namecheap
       final['ApiUser'] = @auth[:api_username]
       final['UserName'] = @auth[:api_username]
       final['ApiKey'] = @auth[:api_key]
-      final['ClientIp'] = '127.0.0.1'
+      final['ClientIp'] = @auth[:ip]
       final.merge(args)
     end
 
