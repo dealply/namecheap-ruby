@@ -21,7 +21,7 @@ module Namecheap
       hash['Domain'] || []
     end
 
-    def purchase_domain(domain_name, years, contact_hash)
+    def purchase_domain(domain_name, years, contact_hash, who_is_guard = true)
       h = {
         :DomainName => domain_name,
         :Years => years,
@@ -65,6 +65,7 @@ module Namecheap
         :AuxBillingCountry => contact_hash[:country],
         :AuxBillingPhone => contact_hash[:phone],
         :AuxBillingEmailAddress => contact_hash[:email],
+        :AddFreeWhoisguard => who_is_guard ? 'yes':'no' 
       }
       if domain_name.end_with?('.us')
         h[:RegistrantNexus] = 'C21'
