@@ -65,7 +65,9 @@ module Namecheap
         :AuxBillingCountry => contact_hash[:country],
         :AuxBillingPhone => contact_hash[:phone],
         :AuxBillingEmailAddress => contact_hash[:email],
-        :AddFreeWhoisguard => who_is_guard ? 'yes':'no' 
+        :AddFreeWhoisguard => who_is_guard ? 'yes':'no',
+        :WGEnabled => who_is_guard ? 'yes':'no',
+        
       }
       if domain_name.end_with?('.us')
         h[:RegistrantNexus] = 'C21'
